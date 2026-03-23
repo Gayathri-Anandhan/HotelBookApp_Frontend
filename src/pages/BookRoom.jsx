@@ -94,7 +94,7 @@ export default function BookRoom() {
                     roomNumber: Number(roomNumber),      // number
                     checkInDate: new Date(checkIn).toISOString().split("T")[0],   // yyyy-MM-dd
                     checkOutDate: new Date(checkOut).toISOString().split("T")[0],
-                    status: "CONFIRMED",                 //  REQUIRED
+                    // status: "CONFIRMED",                 //  REQUIRED
                     totalAmount: Number(totalAmount)     //  number
                 }
             );
