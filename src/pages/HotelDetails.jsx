@@ -63,6 +63,48 @@ export default function AddHotel() {
     //         setErrorMessage("Failed to save hotel");
     //     }
     // };
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     try {
+    //         const hotelObj = {
+    //             id: id ? Number(id) : 0,
+    //             hotelName: formData.HotelName,
+    //             description: formData.description,
+    //             city: formData.city,
+    //             address: formData.address,
+    //             rating: Number(formData.rating),
+    //             price: Number(formData.price),
+    //         };
+
+    //         if (id) {
+    //             const formDataObj = new FormData();
+    //             formDataObj.append("Hotel", JSON.stringify(hotelObj));
+    //             if (file) formDataObj.append("file", file);
+
+    //             await axios.put(
+    //                 `https://hotelbook-app.onrender.com/hotelbook/api/hotel/updatehotel?id=${id}`,
+    //                 formDataObj
+    //             );
+    //             setMessage("Hotel Updated Successfully");
+    //         } else {
+    //             const formDataObj = new FormData();
+    //             formDataObj.append("Hotel", JSON.stringify(hotelObj));
+    //             if (file) formDataObj.append("file", file);
+
+    //             await axios.post(
+    //                 `https://hotelbook-app.onrender.com/hotelbook/api/hotel/saveHotel`,
+    //                 formDataObj
+    //             );
+    //             setMessage("Hotel Added Successfully");
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //         console.log('Error response:', error.response?.data);
+    //         setErrorMessage("Failed to save hotel");
+    //     }
+    // };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -77,21 +119,18 @@ export default function AddHotel() {
                 price: Number(formData.price),
             };
 
-            if (id) {
-                const formDataObj = new FormData();
-                formDataObj.append("Hotel", JSON.stringify(hotelObj));
-                if (file) formDataObj.append("file", file);
+            const formDataObj = new FormData();
+            // ✅ Match the backend parameter name exactly
+            formDataObj.append("hotel", JSON.stringify(hotelObj));
+            if (file) formDataObj.append("file", file);
 
+            if (id) {
                 await axios.put(
                     `https://hotelbook-app.onrender.com/hotelbook/api/hotel/updatehotel?id=${id}`,
                     formDataObj
                 );
                 setMessage("Hotel Updated Successfully");
             } else {
-                const formDataObj = new FormData();
-                formDataObj.append("Hotel", JSON.stringify(hotelObj));
-                if (file) formDataObj.append("file", file);
-
                 await axios.post(
                     `https://hotelbook-app.onrender.com/hotelbook/api/hotel/saveHotel`,
                     formDataObj
@@ -100,7 +139,7 @@ export default function AddHotel() {
             }
         } catch (error) {
             console.error(error);
-            console.log('Error response:', error.response?.data);
+            console.log("Error response:", error.response?.data);
             setErrorMessage("Failed to save hotel");
         }
     };
