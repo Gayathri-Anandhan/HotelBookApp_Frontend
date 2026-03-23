@@ -19,7 +19,7 @@ export default function Payment() {
     const payNow = async () => {
         try {
             // 1️⃣ Create order in backend (Razorpay order ID)
-            const res = await axios.post("http://localhost:8080/hotelbook/api/payments/create-order", null, {
+            const res = await axios.post("https://hotelbook-app.onrender.com/hotelbook/api/payments/create-order", null, {
                 params: {
                     bookingId: Number(bookingId),
                     amount: Number(totalAmount),
@@ -39,7 +39,7 @@ export default function Payment() {
                 order_id: razorpayOrderId,
                 handler: async function (response) {
                     // 3️⃣ On success, send payment details to backend
-                    await axios.post("http://localhost:8080/hotelbook/api/payments/verify", {
+                    await axios.post("https://hotelbook-app.onrender.com/hotelbook/api/payments/verify", {
                         bookingId: Number(bookingId),
                         razorpayPaymentId: response.razorpay_payment_id,
                         razorpayOrderId: response.razorpay_order_id,

@@ -6,13 +6,13 @@ export default function BookingHistory() {
     const userId = localStorage.getItem("userId") || "1";
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/hotelbook/api/bookings/history/${userId}`)
+        axios.get(`https://hotelbook-app.onrender.com/hotelbook/api/bookings/history/${userId}`)
             .then((res) => setBookings(res.data))
             .catch(() => alert("Failed to load bookings"));
     }, [userId]);
 
     const cancelBooking = (id) => {
-        axios.put(`http://localhost:8080/hotelbook/api/bookings/cancel/${id}`)
+        axios.put(`https://hotelbook-app.onrender.com/hotelbook/api/bookings/cancel/${id}`)
             .then(() => setBookings(bookings.map(b => b.id === id ? { ...b, status: "CANCELLED" } : b)))
             .catch(() => alert("Failed to cancel"));
     };

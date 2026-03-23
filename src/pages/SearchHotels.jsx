@@ -19,7 +19,7 @@ export default function SearchHotels() {
 
         try {
             const res = await axios.get(
-                "http://localhost:8080/hotelbook/api/hotel/search",
+                "https://hotelbook-app.onrender.com/hotelbook/api/hotel/search",
                 { params: { city, checkIn, checkOut } }
             );
             setHotels(res.data);

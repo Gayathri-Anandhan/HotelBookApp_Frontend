@@ -83,7 +83,7 @@ export default function AddHotel() {
                 if (file) formDataObj.append("file", file);
 
                 await axios.put(
-                    `http://localhost:8080/hotelbook/api/hotel/updatehotel?id=${id}`,
+                    `https://hotelbook-app.onrender.com/hotelbook/api/hotel/updatehotel?id=${id}`,
                     formDataObj
                 );
                 setMessage("Hotel Updated Successfully");
@@ -93,7 +93,7 @@ export default function AddHotel() {
                 if (file) formDataObj.append("file", file);
 
                 await axios.post(
-                    `http://localhost:8080/hotelbook/api/hotel/saveHotel`,
+                    `https://hotelbook-app.onrender.com/hotelbook/api/hotel/saveHotel`,
                     formDataObj
                 );
                 setMessage("Hotel Added Successfully");
@@ -107,7 +107,7 @@ export default function AddHotel() {
     useEffect(() => {
         if (id) {
             axios
-                .get(`http://localhost:8080/hotelbook/api/hotel/viewhotels?id=${id}`)
+                .get(`https://hotelbook-app.onrender.com/hotelbook/api/hotel/viewhotels?id=${id}`)
                 .then((res) => {
                     const data = res.data;
                     setFormData({

@@ -13,7 +13,7 @@ export default function Dashboard() {
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this hotel?")) {
             try {
-                await axios.delete(`http://localhost:8080/hotelbook/api/hotel/deleteHotels?id=${id}`);
+                await axios.delete(`https://hotelbook-app.onrender.com/hotelbook/api/hotel/deleteHotels?id=${id}`);
 
                 setHotels((prev) => prev.filter((hotel) => hotel.id !== id));
 
@@ -55,7 +55,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         axios
-            .get("http://localhost:8080/hotelbook/api/hotel/allhotels")
+            .get("https://hotelbook-app.onrender.com/hotelbook/api/hotel/allhotels")
             .then((res) => {
                 console.log("API DATA:", res.data);
                 setHotels(res.data);

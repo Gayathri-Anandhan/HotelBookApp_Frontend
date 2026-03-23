@@ -39,7 +39,7 @@ export default function NewRegistration() {
         setErrorMessage("");
 
         try {
-            const url = "http://localhost:8080/hotelbookapp/api/auth/sign-up";
+            const url = "https://hotelbook-app.onrender.com/hotelbookapp/api/auth/sign-up";
 
             const response = await axios.post(url, formData);
 

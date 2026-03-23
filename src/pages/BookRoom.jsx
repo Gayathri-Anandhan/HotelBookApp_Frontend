@@ -87,7 +87,7 @@ export default function BookRoom() {
 
         try {
             const res = await axios.post(
-                "http://localhost:8080/hotelbook/api/bookings/create",
+                "https://hotelbook-app.onrender.com/hotelbook/api/bookings/create",
                 {
                     userId: Number(userId),              // number
                     hotelId: Number(hotelId),            // number
