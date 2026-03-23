@@ -120,7 +120,7 @@ export default function AddHotel() {
             };
 
             const formDataObj = new FormData();
-            // ✅ Match the backend parameter name exactly
+            //  Match the backend parameter name exactly
             formDataObj.append("hotel", JSON.stringify(hotelObj));
             if (file) formDataObj.append("file", file);
 
@@ -150,7 +150,7 @@ export default function AddHotel() {
                 .then((res) => {
                     const data = res.data;
                     setFormData({
-                        HotelName: data.hotelName || "",
+                        HotelName: data.HotelName || "",
                         description: data.description || "",
                         city: data.city || "",
                         address: data.address || "",

@@ -183,7 +183,7 @@ export default function Dashboard() {
                                                         <tr key={hotel.id}>
 
                                                             <td>{hotel.id}</td>
-                                                            <td>{hotel.hotelName}</td>
+                                                            <td>{hotel.HotelName}</td>
                                                             <td>{hotel.city}</td>
                                                             <td>{hotel.address}</td>
                                                             <td>{hotel.description}</td>
