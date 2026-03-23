@@ -126,7 +126,7 @@ export default function AddHotel() {
 
             if (id) {
                 await axios.put(
-                    `https://hotelbook-app.onrender.com/hotelbook/api/hotel/updatehotel?id=${id}`,
+                    `https://hotelbook-app.onrender.com/hotelbook/api/hotel/updateHotels?id=${id}`,
                     formDataObj
                 );
                 setMessage("Hotel Updated Successfully");
@@ -136,11 +136,13 @@ export default function AddHotel() {
                     formDataObj
                 );
                 setMessage("Hotel Added Successfully");
+                setErrorMessage("");
             }
         } catch (error) {
             console.error(error);
             console.log("Error response:", error.response?.data);
             setErrorMessage("Failed to save hotel");
+            setMessage(""); 
         }
     };
     useEffect(() => {
