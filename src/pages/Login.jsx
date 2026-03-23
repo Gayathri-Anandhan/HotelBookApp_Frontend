@@ -73,6 +73,29 @@ export default function Login() {
         setLoading(false);
     };
 
+    // loginHandler.js
+    const loginHandler = async (username, password) => {
+        try {
+            const res = await axios.post("http://localhost:8080/hotelbookapp/api/auth/sign-in", {
+                username,
+                password
+            });
+
+            const { token, name, role } = res.data;
+
+            // Save in localStorage
+            localStorage.setItem("token", token);
+            localStorage.setItem("name", name);
+            localStorage.setItem("role", role);
+
+            // Redirect to home page
+            navigate("/home");
+        } catch (err) {
+            console.error(err);
+            alert("Login failed");
+        }
+    };
+
     return (
         <div className="bg-[#F5F1E8] p-15 rounded-3xl text-neutral-800 shadow-sm mb-10 border border-neutral-200">
             {!isLogin && (

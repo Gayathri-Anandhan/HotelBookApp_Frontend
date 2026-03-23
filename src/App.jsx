@@ -45,6 +45,9 @@ import Payment from "./pages/Payment";
 import HotelDetailsList from './pages/HotelDetailsList.jsx'
 import HotelDetails from './pages/HotelDetails.jsx'
 import BookingHistory from "./pages/BookingHistory.jsx";
+import { LogIn } from "lucide-react";
+import Login from "./pages/Login.jsx";
+import NewRegistration from "./pages/NewRegistration.jsx";
 
 function App() {
 
@@ -53,6 +56,8 @@ function App() {
     <Routes>
 
       <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/NewRegistration" element={<NewRegistration />} />
       <Route path="/search" element={<SearchHotels />} />
       <Route path="/book" element={<BookRoom />} />
       <Route path="/payment" element={<Payment />} />

@@ -5,20 +5,30 @@ import "../App.css";
 function HomePage() {
 
     const navigate = useNavigate();
+    const userName = localStorage.getItem("name");
+    const role = localStorage.getItem("role");
 
     return (
 
         <div className="home">
 
             {/* LOGIN ICON */}
+            <div>
+                <h2>Hotel Booking System</h2>
+                <br></br>
+                <h5>Note: Dashboard and Booking history will be visible only for ADMIN Users</h5>
+            </div>
 
             <div className="top-bar">
                 <span
                     className="login-icon"
                     onClick={() => navigate("/login")}
+                    style={{ cursor: "pointer", marginRight: "8px" }}
                 >
                     👤
                 </span>
+                {/* Show name next to icon */}
+                {userName && <span className="user-name">{userName}</span>}
             </div>
 
 
@@ -148,7 +158,7 @@ function HomePage() {
                     <h3>Payment</h3>
                 </div>
 
-                <div
+                {/* <div
                     className="card"
                     onClick={() => navigate("/HotelDetailsList")}
                 >
@@ -162,10 +172,29 @@ function HomePage() {
                 <div className="card" onClick={() => navigate("/history")}>
                     <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" />
                     <h3>Booking History</h3>
-                </div>
+                </div> */}
 
+                {/* Admin-only cards */}
+                {role && role.toUpperCase() === "ADMIN" && (
+                    <>
+                        <div className="card" onClick={() => navigate("/HotelDetailsList")}>
+                            <img
+                                src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80"
+                                alt="Admin Dashboard"
+                            />
+                            <h3>Dashboard</h3>
+                        </div>
+
+                        <div className="card" onClick={() => navigate("/history")}>
+                            <img
+                                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80"
+                                alt="Booking History"
+                            />
+                            <h3>Booking History</h3>
+                        </div>
+                    </>
+                )}
             </div>
-
         </div>
 
     );
